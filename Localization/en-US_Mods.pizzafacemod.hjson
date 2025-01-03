@@ -1,0 +1,93 @@
+NPCs: {
+	Pizzaface.DisplayName: Pizzaface
+	PizzafaceSpawnAnimation1.DisplayName: Pizzaface
+	PizzafaceSpawnAnimation2.DisplayName: Pizzaface
+	DefeatedPizzaface.DisplayName: Defeated Pizzaface
+}
+
+Projectiles: {
+	Explosion.DisplayName: Explosion
+	Lap2Portal.DisplayName: Lap Portal
+	Lap2Flag.DisplayName: Lap Flag
+	LapFlag.DisplayName: Lap Flag
+	LapPortal.DisplayName: Lap Portal
+	CloudPuff.DisplayName: Cloud Puff
+	Heatpuff.DisplayName: Heatpuff
+}
+
+Bestiary.Pizzaface: A menacingly giant floating pizza with a specialty in chasing fat Italians. Will stop at nothing to catch whoever it decides to toy with.
+
+DeathReasons: {
+	1: "{0} couldn't escape."
+	2: "{0} was too slow."
+	3: "{0}'s fate was sealed."
+	4: "{0}'s combo expired."
+	5: The cycle continues for {0}.
+	6: "{0} ran out of time."
+	7: "{0} misinputed."
+	8: "{0} fucked around and found out."
+	9: "{0}'s life grew legs and ran away."
+}
+
+Items: {
+	Pizza: {
+		DisplayName: Slice of Pizza
+		Tooltip:
+			'''
+			Summons It.
+			Do you really want to do this?
+			'''
+	}
+
+	Lap2SkipIcon: {
+		DisplayName: Lap2 Skip Icon
+		Tooltip: ""
+	}
+
+	MusicNoteIcon: {
+		DisplayName: Music Note Icon
+		Tooltip: ""
+	}
+
+	Lapometer: {
+		DisplayName: Lapometer
+		Tooltip: Displays what lap you're on
+	}
+}
+
+Configs: {
+	ClientConfig: {
+		DisplayName: Client Config
+
+		Lap2Skip: {
+			Label: Lap 2 Skip
+			Tooltip: If true, skips the 2nd lap. Entering the lap portal will instantly start lap 3 and spawn Pizzaface.
+		}
+
+		Headers: {
+			PizzaPursuit: Pizza Pursuit
+			Music: Music
+		}
+
+		PizzaSpeed: {
+			Label: Pizzaface Speed
+			Tooltip: Change the default speed of Pizzaface.
+		}
+
+		LapThemes: {
+			Label: Lap Theme Style
+			Tooltip: Changes which Lap Themes play.
+		}
+	}
+
+	CharacterNames: {
+		Tooltip: ""
+		Peppino.Label: Peppino
+		Noise.Label: Noise
+		Off.Label: Off
+		Pizzelle.Label: Pizzelle
+	}
+}
+
+InfoDisplays.LapInfoDisplay.DisplayName: Lap
+InfoDisplay.Lapcounter: Lap {0}
