@@ -25,6 +25,7 @@ namespace pizzafacemod.Projectiles
             Projectile.height = 150;
             Projectile.timeLeft = 99999999;
             Projectile.scale = 2f;
+            Projectile.tileCollide = false;
             base.SetDefaults();
         }
         public override void OnSpawn(IEntitySource source)
@@ -86,5 +87,6 @@ namespace pizzafacemod.Projectiles
             return false;
         }
 
+        public override Color? GetAlpha(Color lightColor) => Color.White;
     }
 }

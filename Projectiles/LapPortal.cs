@@ -28,6 +28,7 @@ namespace pizzafacemod.Projectiles
         int fadeintimer = 0;
         int fadeouttimer = 0;
         bool dontspawnifcoffin = false;
+        bool incapacitate = false;
         public override void SetStaticDefaults()
         {
             projFrames[Projectile.type] = 3;
@@ -40,6 +41,7 @@ namespace pizzafacemod.Projectiles
             Projectile.width = 50;
             Projectile.height = 150;
             Projectile.timeLeft = 99999999;
+            Projectile.tileCollide = false;
             base.SetDefaults();
         }
 
@@ -49,6 +51,7 @@ namespace pizzafacemod.Projectiles
             Player player = LocalPlayer;
             Projectile.velocity *= 0;
             //DrawOriginOffsetY = 150;
+            PreventDashes();
 
             if (++Projectile.frameCounter >= 5)
             {
@@ -60,12 +63,11 @@ namespace pizzafacemod.Projectiles
             Projectile.timeLeft = 300;
 
             if (Projectile.ai[0] == 0)
-            {
+            {                   
                 if (Projectile.Distance(player.Center) <= 25)
                 {
                     Projectile.ai[0] = 1;
                     SoundEngine.PlaySound(new SoundStyle("pizzafacemod/Projectiles/LapEnter"), Projectile.Center);
-
                 }
             }
 
@@ -79,6 +81,10 @@ namespace pizzafacemod.Projectiles
                 hideUI = true;
                 blockInput = true;
                 player.immune = true;
+                player.releaseHook = true;
+                incapacitate = true;
+
+                
 
 
 
@@ -111,6 +117,7 @@ namespace pizzafacemod.Projectiles
                     hideUI = false;
                     blockInput = false;
                     player.immune = false;
+                    incapacitate = false;
                     
                 }
 
@@ -136,6 +143,29 @@ namespace pizzafacemod.Projectiles
                         NPC.NewNPCDirect(Terraria.Entity.GetSource_None(), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<Pizzaface>(), 0, -1, 0, 0, 0);
                     }
                 }
+            }
+        }
+
+        public void PreventDashes()
+        {
+            if (incapacitate == true)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Main.LocalPlayer.doubleTapCardinalTimer[i] = 0;
+                    Main.LocalPlayer.holdDownCardinalTimer[i] = 0;
+                }
+
+                if (Main.LocalPlayer.dashDelay < 10)
+                {
+                    Main.LocalPlayer.dashDelay = 10;
+                }
+
+                if (Main.LocalPlayer.grapCount > 0)
+                {
+                    Main.LocalPlayer.RemoveAllGrapplingHooks();
+                }
+                
             }
         }
 
